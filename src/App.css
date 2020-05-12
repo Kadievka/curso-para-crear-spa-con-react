@@ -71,6 +71,8 @@
 }
 
 .Login-background{
+  margin-top: 0;
+  padding-top: 0;
   height: 100vh;
   background-size: cover;
   background-position: center;
