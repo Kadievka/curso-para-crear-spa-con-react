@@ -12,6 +12,7 @@ import data from '../requests/places';
 
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
+import Container from '../components/Container';
 
 export default class Home extends React.Component{
 
@@ -44,7 +45,7 @@ export default class Home extends React.Component{
     return(
       <section>
         <div className="Header-background">
-          <div style={{"width":"80%", "margin":"0 auto"}}>
+          <Container>
             <div className="Header-main">
               <Title></Title>
 
@@ -55,7 +56,7 @@ export default class Home extends React.Component{
             <div>
               <Benefits/>
             </div>
-          </div>
+          </Container>
 
         </div>
         <div style={{'backgroundColor': indigo400, 'padding': '50px', color: 'white'}}>
