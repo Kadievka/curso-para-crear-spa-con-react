@@ -2,6 +2,7 @@ import React from 'react';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Signup from "./pages/Signup";
 import App from './App';
 
 import {
@@ -15,6 +16,7 @@ export default class Router extends React.Component{
       <ReactRouter>
         <App><Route exact path="/" component={Home}></Route>
           <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/signup" component={Signup}></Route>
         </App>
       </ReactRouter>
     )
