@@ -47,7 +47,6 @@ export default class Login extends React.Component{
                   </div>
                   );
                 }}></Route>
-                <Link to="/" style={{"marginRight": "1em"}}>Inicio</Link>
               </div>
             </div>
           </Container>
