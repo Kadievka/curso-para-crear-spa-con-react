@@ -8,7 +8,8 @@ import App from './App';
 
 import {
   BrowserRouter as ReactRouter,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 
 const userSignedIn = true;
@@ -32,10 +33,13 @@ export default class Router extends React.Component{
   render(){
     return(
       <ReactRouter>
-        <App><Route exact path="/" component={this.home(userSignedIn)}></Route>
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/signup" component={Login}></Route>
-          {this.signedInRoutes(userSignedIn)}
+        <App>
+          <Switch>
+            <Route exact path="/" component={this.home(userSignedIn)}></Route>
+            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/signup" component={Login}></Route>
+            {this.signedInRoutes(userSignedIn)}
+          </Switch>
         </App>
       </ReactRouter>
     )
