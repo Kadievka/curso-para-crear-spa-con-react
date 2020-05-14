@@ -84,6 +84,18 @@
   background-position: center;
 }
 
+.PlaceH-avatar{
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  overflow: hidden;
+}
+
+.PlaceH-avatar img{
+  max-width: 80%;
+}
 
 .fade-scale-enter {
   opacity: 0;
