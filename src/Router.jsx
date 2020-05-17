@@ -12,7 +12,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-const userSignedIn = false;
+const userSignedIn = true;
 
 export default class Router extends React.Component{
 

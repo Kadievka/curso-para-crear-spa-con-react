@@ -1,20 +1,36 @@
 import React from 'react';
-import Container from '../components/Container';
 import FlatButton from 'material-ui/FlatButton';
-import {Link} from 'react-router-dom';
-
-import data from '../requests/places';
-import PlaceHorizontal from '../components/places/PlaceHorizontal';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import {Link} from 'react-router-dom';
+
+import {getPlaces} from '../requests/places';
+
+import Container from '../components/Container';
+import PlaceHorizontal from '../components/places/PlaceHorizontal';
+
+
 
 export default class Dashboard extends React.Component{
   
   constructor(props){
     super(props);
+
     this.state = {
-      places: data.places
+      places: []
     }
+
+    this.loadPlaces();
+
+  }
+
+  loadPlaces(){
+    getPlaces().then(jsonR=>{
+      console.log(jsonR);
+      this.setState({
+        places: jsonR.docs
+      });
+    })
   }
 
   places(){

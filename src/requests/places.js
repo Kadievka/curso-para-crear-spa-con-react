@@ -1,3 +1,12 @@
+function getPlaces(){
+  return fetch("http://localhost:4000/places")
+  .then(data=>{
+    return data.json();
+  }).catch(console.log);
+}
+
+export {getPlaces};
+
 export default {
   places: [
     {
