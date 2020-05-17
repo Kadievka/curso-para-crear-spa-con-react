@@ -10,6 +10,7 @@ export default class MyAppBar extends React.Component{
       <AppBar
         title="Places"
         style={{'backgroundColor': indigo600}}
+        onTitleTouchTap={this.props.goHome}
         showMenuIconButton={false}
       />
     )
