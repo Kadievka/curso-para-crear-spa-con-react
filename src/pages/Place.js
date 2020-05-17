@@ -31,10 +31,11 @@ class Place extends React.Component{
   }
   
   render(){
+    const {place} = this.state
     return(
       <div className="Place-container">
         <header 
-        className="Place-cover" style={{'backgroundImage': 'url(' + this.state.place.coverImage + ')'}}>
+        className="Place-cover" style={{'backgroundImage': 'url(' + place.coverImage + ')'}}>
         </header>
         <Container>
           <div className="row">
@@ -43,14 +44,14 @@ class Place extends React.Component{
                 
                 <div className="row">
                   <div className="col-xs-12 col-sm-3 col-lg-2">
-                    <img src={this.state.place.avatarImage}
+                    <img src={place.avatarImage}
                       style={{"maxWidth": "100%"}}
                     />
                   </div>
                   <div className="col-xs">
-                    <h1>{this.state.place.title}</h1>
-                    <address>{this.state.place.address}</address>
-                    <p>{this.state.place.description}</p>
+                    <h1>{place.title}</h1>
+                    <address>{place.address}</address>
+                    <p>{place.description}</p>
                   </div>
                 </div>
               </Card>
