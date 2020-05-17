@@ -1,28 +1,33 @@
 import React from 'react';
 import {Card} from 'material-ui/Card';
 import Container from '../components/Container';
-
-
-
-import Title from '../components/Title';
-
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import {getPlace} from '../requests/places';
 
 import {
-  BrowserRouter as ReactRouter,
-  Link,
-  Route
+  withRouter
 } from 'react-router-dom';
 
 
 
-export default class Place extends React.Component{
+class Place extends React.Component{
   constructor(props){
     super(props);
+    const slug = props.match.params.slug;
+
+    this.loadPlace(slug);
+
     this.state = {
       place:{}
     }
+  }
+
+  loadPlace(slug){
+    getPlace(slug).then(json=>{
+      console.log(json);
+      this.setState({
+        place: json
+      });
+    })
   }
   
   render(){
@@ -56,3 +61,5 @@ export default class Place extends React.Component{
     );
   }
 }
+
+export default withRouter(Place);
