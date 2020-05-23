@@ -15,21 +15,21 @@ import {
   Switch
 } from 'react-router-dom';
 
-const userSignedIn = this.props.user.jwt ? true : false;
+
 
 class Router extends React.Component{
-
+  
   //esto es un componente que depende de condiciones, donde se muestra o no
-  signedInRoutes(userSignedIn){
-    if(userSignedIn){
+  signedInRoutes(){
+    if(this.props.user.jwt){
       return(
         <Route path="/new" render={()=><h1>Bienvenido</h1>} />
       );
     }
   };
 
-  home(userSignedIn){
-    if(userSignedIn) return Dashboard;
+  home(){
+    if(this.props.user.jwt) return Dashboard;
     return Home;
   }
 
@@ -38,11 +38,11 @@ class Router extends React.Component{
       <ReactRouter>
         <App>
           <Switch>
-            <Route exact path="/" component={this.home(userSignedIn)}></Route>
+            <Route exact path="/" component={this.home(this.props.user.jwt)}></Route>
             <Route exact path="/lugares/:slug" component={Place}></Route>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/signup" component={Login}></Route>
-            {this.signedInRoutes(userSignedIn)}
+            {this.signedInRoutes(this.signedInRoutes)}
           </Switch>
         </App>
       </ReactRouter>

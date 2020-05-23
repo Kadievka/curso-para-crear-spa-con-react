@@ -55,7 +55,6 @@ class Login extends React.Component{
           <Container>
             <div style={{"textAlign": "left"}}>
               <Title />
-              <h1>{this.props.user.jwt}</h1>
               <TextField
                 floatingLabelText="Correo electrónico"
                 type="email"
