@@ -1,19 +1,28 @@
 import React from 'react';
+
 import Title from '../components/Title';
+import Container from '../components/Container';
+
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {connect} from 'react-redux';
+
+import * as actions from '../actions/userActions';
+
 import {login, signUp} from '../requests/auth';
+
 import {
   BrowserRouter as ReactRouter,
   Link,
   Route
 } from 'react-router-dom';
 
-import Container from '../components/Container';
-export default class Login extends React.Component{
+class Login extends React.Component{
  
   constructor(props){
     super(props);
+
+    console.log(props.user);
 
     this.requestAuth = this.requestAuth.bind(this);
     this.createAccount = this.createAccount.bind(this);
@@ -25,7 +34,10 @@ export default class Login extends React.Component{
       email: this.refs.emailField.getValue(),
       password: this.refs.passwordField.getValue(),
     }
-    login(credentials).then(console.log).catch(console.log);
+    login(credentials).then(data=>{
+      console.log(data);
+      this.props.dispatch(actions.login(data.jwt));
+    }).catch(console.log);
   }
 
   createAccount(){
@@ -43,6 +55,7 @@ export default class Login extends React.Component{
           <Container>
             <div style={{"textAlign": "left"}}>
               <Title />
+              <h1>{this.props.user.jwt}</h1>
               <TextField
                 floatingLabelText="Correo electrónico"
                 type="email"
@@ -98,3 +111,11 @@ export default class Login extends React.Component{
     );
   }
 }
+
+function mapStateToProps(state, ownProps){
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Login)
