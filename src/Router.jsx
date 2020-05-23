@@ -7,15 +7,17 @@ import Place from './pages/Place';
 
 import App from './App';
 
+import {connect} from 'react-redux';
+
 import {
   BrowserRouter as ReactRouter,
   Route,
   Switch
 } from 'react-router-dom';
 
-const userSignedIn = false;
+const userSignedIn = this.props.user.jwt ? true : false;
 
-export default class Router extends React.Component{
+class Router extends React.Component{
 
   //esto es un componente que depende de condiciones, donde se muestra o no
   signedInRoutes(userSignedIn){
@@ -47,3 +49,11 @@ export default class Router extends React.Component{
     )
   }
 }
+
+function mapStateToProps(state, ownProps){
+  return {
+    user:state.user
+  }
+}
+
+export default connect(mapStateToProps)(Router);
