@@ -1,16 +1,12 @@
 import React from 'react';
-
 import Title from '../components/Title';
 import Container from '../components/Container';
-
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import {connect} from 'react-redux';
-
 import * as actions from '../actions/userActions';
-
 import {login, signUp} from '../requests/auth';
-
+import {push} from 'react-router-redux';
 import {
   BrowserRouter as ReactRouter,
   Link,
@@ -21,9 +17,6 @@ class Login extends React.Component{
  
   constructor(props){
     super(props);
-
-    console.log(props.user);
-
     this.requestAuth = this.requestAuth.bind(this);
     this.createAccount = this.createAccount.bind(this);
 
@@ -35,8 +28,8 @@ class Login extends React.Component{
       password: this.refs.passwordField.getValue(),
     }
     login(credentials).then(data=>{
-      console.log(data);
       this.props.dispatch(actions.login(data.jwt));
+      this.props.dispatch(push('/'));//hacia dónde nos tiener que redireccionar
     }).catch(console.log);
   }
 

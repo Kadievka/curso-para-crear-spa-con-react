@@ -1,21 +1,15 @@
 import React from 'react';
-
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Place from './pages/Place';
-
-import App from './App';
-
-import {connect} from 'react-redux';
-
 import {
   BrowserRouter as ReactRouter,
   Route,
   Switch
 } from 'react-router-dom';
-
-
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Place from './pages/Place';
+import App from './App';
+import {connect} from 'react-redux';
 
 class Router extends React.Component{
   
