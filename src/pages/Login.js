@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {connect} from 'react-redux';
 import * as actions from '../actions/userActions';
 import {login, signUp} from '../requests/auth';
-import {push} from 'react-router-redux';
+import {routerActions} from 'react-router-redux';
 import {
   BrowserRouter as ReactRouter,
   Link,
@@ -29,8 +29,9 @@ class Login extends React.Component{
       password: this.refs.passwordField.getValue(),
     }
     login(credentials).then(data=>{
+      console.log(data);
       this.props.dispatch(actions.login(data.jwt));
-      this.props.dispatch(push('/'));//hacia dónde nos tiener que redireccionar
+      this.props.dispatch(routerActions.push('/'));//hacia dónde nos tiener que redireccionar
       console.log(this.props)
     }).catch(console.log);
   }

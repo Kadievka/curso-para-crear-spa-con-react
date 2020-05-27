@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MyAppBar from './MyAppBar';
-import {push} from 'react-router-redux';
+import { routerActions } from 'react-router-redux'
 
 class Navigation extends React.Component{
   constructor(props){
@@ -10,7 +10,7 @@ class Navigation extends React.Component{
   }
 
   goHome(){
-    this.props.dispatch(push("/"));
+    this.props.dispatch(routerActions.push("/"));
   }
 
   render(){

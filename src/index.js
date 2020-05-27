@@ -5,8 +5,11 @@ import Router from './Router';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
 
-const store = configureStore();
+const history = createHistory();
 
-ReactDOM.render(<Provider store={store}><Router /></Provider>, document.getElementById('root'));
+const store = configureStore(history);
+
+ReactDOM.render(<Provider store={store}><Router history={history}/></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Place from './pages/Place';
 import App from './App';
 import {connect} from 'react-redux';
+import {ConnectedRouter} from 'connected-react-router';
 
 class Router extends React.Component{
   
@@ -29,7 +30,7 @@ class Router extends React.Component{
 
   render(){
     return(
-      <ReactRouter>
+      <ConnectedRouter history={this.props.history}>
         <App>
           <Switch>
             <Route exact path="/" component={this.home(this.props.user.jwt)}></Route>
@@ -39,7 +40,7 @@ class Router extends React.Component{
             {this.signedInRoutes(this.signedInRoutes)}
           </Switch>
         </App>
-      </ReactRouter>
+      </ConnectedRouter>
     )
   }
 }

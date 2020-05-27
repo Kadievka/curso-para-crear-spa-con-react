@@ -1,20 +1,21 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import persistState from 'redux-localstorage';
 import reducers from '../reducers';
-import {routerReducer} from 'react-router-redux';
+import {connectRouter, routerMiddleware} from 'connected-react-router';
 
-const enhancer = compose(
-  persistState('user')
-);
+const rootReducer = (history) => combineReducers({
+  router: connectRouter(history),
+  ... reducers
+})
 
-const rootReducer = combineReducers({
-  ...reducers,
-  router: routerReducer
-});//destructuring assigment
+export default function configureStore(history) {
+  const store = createStore(
+    rootReducer(history),
+    compose(
+      applyMiddleware(routerMiddleware(history)),
+      persistState('user')
+    ),
+  )
 
-export default function configureStore(){
-  return createStore(
-    rootReducer,
-    {},
-    enhancer); //el segundo argumento es el valor inicial del contenedor
+  return store
 }
