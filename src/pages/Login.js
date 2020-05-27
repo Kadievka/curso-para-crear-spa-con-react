@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Title from '../components/Title';
 import Container from '../components/Container';
 import TextField from 'material-ui/TextField';
@@ -30,6 +31,7 @@ class Login extends React.Component{
     login(credentials).then(data=>{
       this.props.dispatch(actions.login(data.jwt));
       this.props.dispatch(push('/'));//hacia dónde nos tiener que redireccionar
+      console.log(this.props)
     }).catch(console.log);
   }
 
@@ -110,4 +112,4 @@ function mapStateToProps(state, ownProps){
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps)(Login));
