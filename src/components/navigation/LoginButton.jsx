@@ -6,7 +6,7 @@ export default class LoginButton extends React.Component{
   render(){
     return(
       <Link to="/login">
-        <FlatButton label="Iniciar sesión" style={{'color': 'white'}}/>
+        <FlatButton label="Iniciar sesión" style={{'color': 'white', 'marginTop':'6px'}}/>
       </Link>
     );
   }
