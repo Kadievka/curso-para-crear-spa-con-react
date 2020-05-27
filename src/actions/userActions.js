@@ -11,3 +11,9 @@ export function loadUser(user){
     user
   }
 }
+
+export function logout(){
+  return {
+    type: 'LOG_OUT'
+  }
+}
