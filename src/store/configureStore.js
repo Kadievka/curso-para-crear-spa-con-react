@@ -5,7 +5,7 @@ import {connectRouter, routerMiddleware} from 'connected-react-router';
 
 const rootReducer = (history) => combineReducers({
   router: connectRouter(history),
-  ... reducers
+  ...reducers
 })
 
 export default function configureStore(history) {

@@ -23,7 +23,6 @@ class Place extends React.Component{
 
   loadPlace(slug){
     getPlace(slug).then(json=>{
-      console.log(json);
       this.setState({
         place: json
       });
@@ -46,6 +45,7 @@ class Place extends React.Component{
                   <div className="col-xs-12 col-sm-3 col-lg-2">
                     <img src={place.avatarImage}
                       style={{"maxWidth": "100%"}}
+                      alt=""
                     />
                   </div>
                   <div className="col-xs">

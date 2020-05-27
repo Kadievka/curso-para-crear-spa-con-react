@@ -26,7 +26,6 @@ export default class Dashboard extends React.Component{
 
   loadPlaces(){
     getPlaces().then(jsonR=>{
-      console.log(jsonR);
       this.setState({
         places: jsonR.docs
       });

@@ -10,7 +10,6 @@ import Title from '../components/Title';
 import Benefits from '../components/Benefits';
 import PlaceCard from '../components/places/PlaceCard';
 import data from '../requests/places';
-import {getPlaces} from '../requests/places';
 
 
 class Home extends React.Component{
@@ -21,18 +20,8 @@ class Home extends React.Component{
     this.state = {
       places: data.places
     }
-    console.log(this.props.places);
 
     this.hidePlace = this.hidePlace.bind(this);
-  }
-
-  loadPlaces(){
-    getPlaces().then(jsonR=>{
-      const places = jsonR.doc;
-      
-
-      
-    })
   }
 
   places(){
@@ -45,7 +34,7 @@ class Home extends React.Component{
 
   hidePlace(place){
     this.setState({
-      places: this.state.places.filter(el => el != place)
+      places: this.state.places.filter(el => el !== place)
     })
   }
 
@@ -59,7 +48,7 @@ class Home extends React.Component{
               <Link to="/signup">
               <RaisedButton label="Crear cuenta gratuita" secondary={true} />
               </Link>
-              <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/top-background.png'} />
+              <img alt="" className="Header-illustration" src={process.env.PUBLIC_URL + '/images/top-background.png'} />
             </div>
             <div>
               <Benefits/>

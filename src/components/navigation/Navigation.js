@@ -6,6 +6,7 @@ import { routerActions } from 'react-router-redux'
 class Navigation extends React.Component{
   constructor(props){
     super(props);
+    //console.log(props.user)
     this.goHome = this.goHome.bind(this);
   }
 
@@ -14,7 +15,7 @@ class Navigation extends React.Component{
   }
 
   render(){
-    return <MyAppBar goHome={this.goHome}/>
+    return <MyAppBar goHome={this.goHome} user={this.props.user}/>
   }
 }
 

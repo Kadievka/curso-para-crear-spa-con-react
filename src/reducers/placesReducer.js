@@ -5,5 +5,4 @@ export default function placesReducer(state = [1], action){//todos reciben el st
     default:
       return state;
   }
-  return state;
 }

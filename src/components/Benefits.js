@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Card, CardText, CardMedia, CardTitle } from 'material-ui/Card';
+import { Card, CardText} from 'material-ui/Card';
 
-import {indigo400,redA400,lightBlueA400,amberA400} from 'material-ui/styles/colors';
+import {redA400,lightBlueA400,amberA400} from 'material-ui/styles/colors';
 
 
 export default class Benefit extends React.Component{
@@ -14,7 +14,7 @@ export default class Benefit extends React.Component{
           <CardText >
             <div className="row">
               <div className="Header-Benefit-image" style={{'backgroundColor': redA400}}>
-                <img src={process.env.PUBLIC_URL + '/images/heart.png'} />
+                <img src={process.env.PUBLIC_URL + '/images/heart.png'} alt=""/>
               </div>
               <div className="Header-Benefit-content">
                 <h3>Calificaciones con emociones</h3>
@@ -29,7 +29,7 @@ export default class Benefit extends React.Component{
           <CardText >
             <div className="row">
               <div className="Header-Benefit-image" style={{'backgroundColor': lightBlueA400}}>
-                <img src={process.env.PUBLIC_URL + '/images/no-internet.png'} />
+                <img src={process.env.PUBLIC_URL + '/images/no-internet.png'} alt=""/>
               </div>
               <div className="Header-Benefit-content">
                 <h3>¿Sin Internet? Sin problemas</h3>
@@ -44,7 +44,7 @@ export default class Benefit extends React.Component{
           <CardText >
             <div className="row">
               <div className="Header-Benefit-image" style={{'backgroundColor': amberA400}}>
-                <img src={process.env.PUBLIC_URL + '/images/star.png'} />
+                <img src={process.env.PUBLIC_URL + '/images/star.png'} alt=""/>
               </div>
               <div className="Header-Benefit-content">
                 <h3>¿Sin Internet? Sin problemas</h3>

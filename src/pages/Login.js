@@ -9,7 +9,6 @@ import * as actions from '../actions/userActions';
 import {login, signUp} from '../requests/auth';
 import {routerActions} from 'react-router-redux';
 import {
-  BrowserRouter as ReactRouter,
   Link,
   Route
 } from 'react-router-dom';
@@ -29,10 +28,9 @@ class Login extends React.Component{
       password: this.refs.passwordField.getValue(),
     }
     login(credentials).then(data=>{
-      console.log(data);
       this.props.dispatch(actions.login(data.jwt));
+      this.props.dispatch(actions.loadUser(data.user));
       this.props.dispatch(routerActions.push('/'));//hacia dónde nos tiener que redireccionar
-      console.log(this.props)
     }).catch(console.log);
   }
 
@@ -89,14 +87,14 @@ class Login extends React.Component{
             <Route path="/login" exact render={()=>{
               return (
                 <div className="Login-background" 
-                style={{'backgroundImage': "url("+process.env.PUBLIC_URL + '/images/login-background.jpeg'+")"}}>
+                style={{'backgroundImage': "url("+process.env.PUBLIC_URL+'/images/login-background.jpeg)'}}>
                 </div>
               );
             }}></Route>
             <Route path="/signup" exact render={()=>{
               return (
                 <div className="Login-background" 
-                style={{'backgroundImage': "url("+process.env.PUBLIC_URL + '/images/friends.jpeg'+")"}}>
+                style={{'backgroundImage': "url("+process.env.PUBLIC_URL+'/images/friends.jpeg)'}}>
                 </div>
               );
             }}></Route>
