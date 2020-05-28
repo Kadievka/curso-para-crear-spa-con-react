@@ -1,5 +1,4 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';

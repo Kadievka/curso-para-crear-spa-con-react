@@ -13,6 +13,29 @@ import {
   Route
 } from 'react-router-dom';
 
+let NameField = (props)=>(
+  <TextField
+    floatingLabelText = "Nombre"
+    type = "text"
+    className = "textfield"
+    ref = {props.nameRef}
+  />
+);
+
+let LoginActions = (props)=>(
+  <div>
+    <Link to="/signup" style={{"marginRight": "1em"}}>Crear nueva cuenta</Link>
+    <RaisedButton onClick={props.requestAuth} label="Ingresar" secondary={true}/>
+  </div>
+);
+
+let SingUpActions = (props)=>(
+  <div>
+    <Link to="/login" style={{"marginRight": "1em"}}>Ya tengo una cuenta</Link>
+    <RaisedButton onClick={props.createAccount} label="Crear cuenta" secondary={true}/>
+  </div>
+);
+
 class Login extends React.Component{
  
   constructor(props){
@@ -30,7 +53,7 @@ class Login extends React.Component{
     login(credentials).then(data=>{
       this.props.dispatch(actions.login(data.jwt));
       this.props.dispatch(actions.loadUser(data.user));
-      this.props.dispatch(routerActions.push('/'));//hacia dónde nos tiener que redireccionar
+      this.props.dispatch(routerActions.push('/'));
     }).catch(console.log);
   }
 
@@ -38,6 +61,7 @@ class Login extends React.Component{
     const credentials = {
       email: this.refs.emailField.getValue(),
       password: this.refs.passwordField.getValue(),
+      name: this.nameElement.getValue(),
     }
     signUp(credentials).then(console.log).catch(console.log);
   }
@@ -61,23 +85,19 @@ class Login extends React.Component{
                 className="textfield"
                 ref="passwordField"
               />
+
+              <Route path="/signup" exact render={()=>(<NameField nameRef={(el)=>(this.nameElement = el)}/>)}></Route>
+
               <div className="Login-actions">
-                <Route path="/login" exact render={()=>{
-                  return (
-                    <div>
-                      <Link to="/signup" style={{"marginRight": "1em"}}>Crear nueva cuenta</Link>
-                      <RaisedButton onClick={this.requestAuth} label="Ingresar" secondary={true}/>
-                    </div>
-                  );
-                }}></Route>
-                <Route path="/signup" exact render={()=>{
-                  return (
-                  <div>
-                    <Link to="/login" style={{"marginRight": "1em"}}>Ya tengo cuenta cuenta</Link>
-                    <RaisedButton onClick={this.createAccount} label="Registrarse" secondary={true}/>
-                  </div>
-                  );
-                }}></Route>
+
+                <Route path="/login" exact render={()=>(
+                  <LoginActions requestAuth={this.requestAuth}/>
+                )}></Route>
+
+                <Route path="/signup" exact render={()=>(
+                  <SingUpActions createAccount={this.createAccount}/>
+                )}></Route>
+                
               </div>
             </div>
           </Container>
