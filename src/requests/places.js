@@ -14,7 +14,28 @@ function getPlace(slug){
   }).catch(console.log);
 }
 
-export {getPlaces, getPlace};
+function createPlace(data, jwt){
+  
+  let formData =  new FormData();
+
+  for (const field in data) {
+    formData.append(field, data[field]);
+  }
+  
+  return fetch(config.url+"/places", {
+    method:'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + jwt
+    }
+  })
+  .then(result=>{
+    return result.json();
+  }).catch(console.log);
+}
+
+export {getPlaces, getPlace, createPlace};
 
 export default {
   places: [
