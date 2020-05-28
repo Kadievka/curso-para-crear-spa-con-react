@@ -42,7 +42,7 @@ class Login extends React.Component{
     super(props);
     this.requestAuth = this.requestAuth.bind(this);
     this.createAccount = this.createAccount.bind(this);
-
+    this.auth = this.auth.bind(this);
   }
 
   requestAuth(){
@@ -50,11 +50,13 @@ class Login extends React.Component{
       email: this.refs.emailField.getValue(),
       password: this.refs.passwordField.getValue(),
     }
-    login(credentials).then(data=>{
-      this.props.dispatch(actions.login(data.jwt));
-      this.props.dispatch(actions.loadUser(data.user));
-      this.props.dispatch(routerActions.push('/'));
-    }).catch(console.log);
+    login(credentials).then(this.auth).catch(console.log);
+  }
+
+  auth(data){
+    this.props.dispatch(actions.login(data.jwt));
+    this.props.dispatch(actions.loadUser(data.user));
+    this.props.dispatch(routerActions.push('/'));
   }
 
   createAccount(){
@@ -63,7 +65,7 @@ class Login extends React.Component{
       password: this.refs.passwordField.getValue(),
       name: this.nameElement.getValue(),
     }
-    signUp(credentials).then(console.log).catch(console.log);
+    signUp(credentials).then(this.auth).catch(console.log);
   }
 
   render(){
@@ -97,7 +99,7 @@ class Login extends React.Component{
                 <Route path="/signup" exact render={()=>(
                   <SingUpActions createAccount={this.createAccount}/>
                 )}></Route>
-                
+
               </div>
             </div>
           </Container>

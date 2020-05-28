@@ -5,10 +5,16 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 export default class MyAppBar extends React.Component{
   
+  getName(){
+    if(this.props.user.name) return this.props.user.name;
+    if(this.props.user.email)return this.props.user.email.split('@')[0];
+    return null;
+  }
+  
   title(){
     return(
     <span style={{'cursor': 'pointer', 'textTransform': 'capitalize'}}>
-      {this.props.user.jwt ? 'Bienvenido, '+this.props.user.name : 'Places'} 
+      {this.props.user.jwt ? 'Bienvenido '+this.getName() : 'Places'} 
     </span>
     );
   }
