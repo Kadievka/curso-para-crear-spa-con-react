@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {routerActions} from 'connected-react-router';
-import Container from '../../components/Container';
-import Title from '../../components/Title';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Card from 'material-ui/Card';
 import * as requests from '../../requests/places';
+import Container from '../../components/Container';
+import Title from '../../components/Title';
+import Uploader from '../../components/uploader/Uploader';
 
 const textStyles = {
   width: '100%'
@@ -52,6 +53,7 @@ class NewPlace extends React.Component{
               ref="addressField"
               style={textStyles}
             />
+            <Uploader label="Subir avatar"/>
             <TextField
               floatingLabelText="Descripción del negocio"
               ref="descriptionField"
