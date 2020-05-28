@@ -2,12 +2,11 @@ import React from 'react';
 import {Card} from 'material-ui/Card';
 import Container from '../components/Container';
 import {getPlace} from '../requests/places';
-
 import {
   withRouter
 } from 'react-router-dom';
-
-
+import FlatButton from 'material-ui/FlatButton';
+import VisitModal from '../components/visits/VisitModal';
 
 class Place extends React.Component{
   constructor(props){
@@ -33,6 +32,7 @@ class Place extends React.Component{
     const {place} = this.state
     return(
       <div className="Place-container">
+        <VisitModal place={place}/>
         <header 
         className="Place-cover" style={{'backgroundImage': 'url(' + place.coverImage + ')'}}>
         </header>
@@ -40,7 +40,6 @@ class Place extends React.Component{
           <div className="row">
             <div className="col-xs-12 col-md-8">
               <Card className="Place-Card">
-                
                 <div className="row">
                   <div className="col-xs-12 col-sm-3 col-lg-2">
                     <img src={place.avatarImage}
@@ -53,6 +52,11 @@ class Place extends React.Component{
                     <address>{place.address}</address>
                     <p>{place.description}</p>
                   </div>
+
+                  <div style={{'marginTop': '1em'}}>
+                    <FlatButton label="Agregar un nuevo comentario" secondary={true}/>
+                  </div>
+
                 </div>
               </Card>
             </div>
