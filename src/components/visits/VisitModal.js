@@ -24,7 +24,7 @@ export default class VisitModal extends React.Component{
                 <Title/>
                 <h2>
                   Cuéntanos de tu visita a 
-                  <span style={{'backgroundColor':'yellow700', 'margin':'0 0.3em'}}>{this.props.place.title}</span>
+                  <span style={{'backgroundColor':yellow700, 'margin':'0 0.3em'}}>{this.props.place.title}</span>
                 </h2>
               </header>
               <div className="row">

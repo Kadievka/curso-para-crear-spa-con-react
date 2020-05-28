@@ -10,6 +10,7 @@ import Place from './pages/Place';
 import App from './App';
 import {connect} from 'react-redux';
 import {ConnectedRouter} from 'connected-react-router';
+import NewPlace from './pages/places/NewPlace.js';
 
 class Router extends React.Component{
   
@@ -17,7 +18,7 @@ class Router extends React.Component{
   signedInRoutes(){
     if(this.props.user.jwt){
       return(
-        <Route path="/new" render={()=><h1>Bienvenido</h1>} />
+        <Route path="/new" component={NewPlace} />
       );
     }
   };
