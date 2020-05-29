@@ -15,6 +15,7 @@ export default class VisitModal extends React.Component{
     }
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   closeModal(){
@@ -27,6 +28,12 @@ export default class VisitModal extends React.Component{
     this.setState({
       open:true
     });
+  }
+
+  submit(){
+    const observation = this.refs.observationField.getValue();
+    this.props.onSubmit(observation);
+    this.closeModal();
   }
 
   render(){
@@ -54,7 +61,11 @@ export default class VisitModal extends React.Component{
                     style={{'width':'100%'}}
                   />
                   <div style={{'marginTop': '1em'}}>
-                    <RaisedButton label="Enviar" secondary={true}/>
+                    <RaisedButton
+                      label="Enviar"
+                      secondary={true}
+                      onClick={this.submit}
+                    />
                     <FlatButton
                       label="Cancelar"
                       style={{'marginLeft': '2em'}}

@@ -4,7 +4,7 @@ import Container from '../components/Container';
 import {getPlace} from '../requests/places';
 import {withRouter} from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
-import VisitModal from '../components/visits/VisitModal';
+import VisitForm from '../components/visits/VisitForm';
 
 class Place extends React.Component{
   constructor(props){
@@ -17,7 +17,7 @@ class Place extends React.Component{
       place:{}
     }
 
-    this.openVisitModal = this.openVisitModal.bind(this);
+
   }
 
   loadPlace(slug){
@@ -28,15 +28,13 @@ class Place extends React.Component{
     })
   }
 
-  openVisitModal(){
-    this.refs.modalRef.openModal();
-  }
+
   
   render(){
     const {place} = this.state
     return(
       <div className="Place-container">
-        <VisitModal place={place} ref="modalRef"/>
+        
         <header 
         className="Place-cover" style={{'backgroundImage': 'url(' + place.coverImage + ')'}}>
         </header>
@@ -57,11 +55,7 @@ class Place extends React.Component{
                     <p>{place.description}</p>
                   </div>
                   <div style={{'marginTop': '1em'}}>
-                    <FlatButton
-                      onClick={this.openVisitModal}
-                      label="Agregar un nuevo comentario"
-                      secondary={true}
-                    />
+                    <VisitForm place={place}/>
                   </div>
                 </div>
               </Card>
