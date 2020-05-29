@@ -17,10 +17,15 @@ class NewPlace extends React.Component{
   
   constructor(props){
     super(props)
+    this.state = {
+      uploading: false
+    };
     this.createPlace = this.createPlace.bind(this);
+    this.getFile = this.getFile.bind(this);
   }
   
   createPlace(){
+
     const data = {
       title: this.refs.titleField.getValue(),
       address: this.refs.addressField.getValue(),
@@ -30,9 +35,22 @@ class NewPlace extends React.Component{
       alert('Por favor, llenar todos los campos');
       return null;
     }
+
+    if(this.state.avatar) data.avatar = this.state.avatar;
+    if(this.state.cover) data.cover = this.state.cover;
+
+    this.setState({uploading: true});
+    
     requests.createPlace(data, this.props.user.jwt).then(data=>{
+      this.setState({uploading: false});
       this.props.dispatch(routerActions.push('/lugares/'+data.slug));
     }).catch(console.log);
+  }
+
+  getFile(type, file){
+    let state = {};
+    state[type] = file;
+    this.setState(state);
   }
 
   render(){
@@ -53,7 +71,12 @@ class NewPlace extends React.Component{
               ref="addressField"
               style={textStyles}
             />
-            <Uploader label="Subir avatar"/>
+            <div style={{'marginTop': '1em'}}>
+              <Uploader label="Subir avatar" type='avatar' getFile={this.getFile}/>
+            </div>
+            <div style={{'marginTop': '1em'}}>
+              <Uploader label="Subir cover" type='cover' getFile={this.getFile}/>
+            </div>
             <TextField
               floatingLabelText="Descripción del negocio"
               ref="descriptionField"
@@ -61,7 +84,12 @@ class NewPlace extends React.Component{
               style={textStyles}
             />
             <div style={{'textAlign':"right", 'marginTop': '1em'}}>
-              <RaisedButton label="Guardar" secondary={true} onClick={this.createPlace}/>
+              <RaisedButton
+                label="Guardar"
+                secondary={true}
+                onClick={this.createPlace}
+                disabled={this.state.uploading}
+              />
             </div>
           </Card>
         </Container>

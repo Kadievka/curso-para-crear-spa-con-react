@@ -20,10 +20,11 @@ export default class Uploader extends React.Component{
   handleFile(event){
     let file = event.target.files[0];//los inputs tipo file siempre devuelven un arreglo
     if(!file) return;
-    //console.log(file);
+    console.log(file);
     this.setState({
       file: file
     });
+    this.props.getFile(this.props.type, file);
   }
 
   render(){
