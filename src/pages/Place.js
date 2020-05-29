@@ -2,9 +2,7 @@ import React from 'react';
 import {Card} from 'material-ui/Card';
 import Container from '../components/Container';
 import {getPlace} from '../requests/places';
-import {
-  withRouter
-} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import VisitModal from '../components/visits/VisitModal';
 
@@ -18,6 +16,8 @@ class Place extends React.Component{
     this.state = {
       place:{}
     }
+
+    this.openVisitModal = this.openVisitModal.bind(this);
   }
 
   loadPlace(slug){
@@ -27,12 +27,16 @@ class Place extends React.Component{
       });
     })
   }
+
+  openVisitModal(){
+    this.refs.modalRef.openModal();
+  }
   
   render(){
     const {place} = this.state
     return(
       <div className="Place-container">
-        <VisitModal place={place}/>
+        <VisitModal place={place} ref="modalRef"/>
         <header 
         className="Place-cover" style={{'backgroundImage': 'url(' + place.coverImage + ')'}}>
         </header>
@@ -52,11 +56,13 @@ class Place extends React.Component{
                     <address>{place.address}</address>
                     <p>{place.description}</p>
                   </div>
-
                   <div style={{'marginTop': '1em'}}>
-                    <FlatButton label="Agregar un nuevo comentario" secondary={true}/>
+                    <FlatButton
+                      onClick={this.openVisitModal}
+                      label="Agregar un nuevo comentario"
+                      secondary={true}
+                    />
                   </div>
-
                 </div>
               </Card>
             </div>

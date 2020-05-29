@@ -10,13 +10,30 @@ import { yellow700 } from 'material-ui/styles/colors';
 export default class VisitModal extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      open:false
+    }
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  closeModal(){
+    this.setState({
+      open:false
+    });
+  }
+
+  openModal(){
+    this.setState({
+      open:true
+    });
   }
 
   render(){
     return (
       <div>
         <Modal
-          isOpen={true}
+          isOpen={this.state.open}
         >
           <Container>
             <div style={{'textAlign': 'left', 'marginTop': '2em'}}>
@@ -38,7 +55,11 @@ export default class VisitModal extends React.Component{
                   />
                   <div style={{'marginTop': '1em'}}>
                     <RaisedButton label="Enviar" secondary={true}/>
-                    <FlatButton label="Cancelar" style={{'marginLeft': '2em'}}/>
+                    <FlatButton
+                      label="Cancelar"
+                      style={{'marginLeft': '2em'}}
+                      onClick={this.closeModal}
+                    />
                   </div>
                 </div>
               </div>
