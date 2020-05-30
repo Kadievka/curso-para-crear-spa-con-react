@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { yellow700 } from 'material-ui/styles/colors';
+import EmojiPicker from '../visits/emoji_picker/EmojiPicker';
 
 export default class VisitModal extends React.Component{
   constructor(props){
@@ -52,7 +53,9 @@ export default class VisitModal extends React.Component{
                 </h2>
               </header>
               <div className="row">
-                <div className="col-xs-4 col-sm2 col-lg-1"></div>
+                <div className="col-xs-4 col-sm2 col-lg-1">
+                  <EmojiPicker/>
+                </div>
                 <div className="col-xs">
                   <TextField
                     floatingLabelText="Cuéntanos qué te pareció este lugar"
