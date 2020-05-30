@@ -1,4 +1,5 @@
 import React from 'react';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 import Visit from './Visit';
 
 export default class VisitsCollection extends React.Component{
@@ -16,7 +17,9 @@ export default class VisitsCollection extends React.Component{
   render(){
     return(
       <div>
-        {this.visits()}
+        <TransitionGroup>
+          {this.visits()}
+        </TransitionGroup>
       </div>
     );
   }
