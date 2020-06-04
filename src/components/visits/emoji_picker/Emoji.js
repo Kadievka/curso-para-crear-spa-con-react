@@ -1,12 +1,15 @@
 import React from 'react';
 import emojione from 'emojione';
 
+function getEmojiHTML(code){
+  return {
+    __html: emojione.shortnameToImage(code)
+  }
+}
+
 const Emoji = (props)=>{
   return (
-    <div>
-      {/* {emojione.shortnameToImage(":heart:")} */}
-      <img class="emojione" alt="❤" title=":heart:" src="https://cdn.jsdelivr.net/emojione/assets/4.5/png/32/2764.png"/>
-    </div>
+    <div dangerouslySetInnerHTML={getEmojiHTML(props.code)}></div>
   );
 }
 
