@@ -1,12 +1,16 @@
 import React from 'react';
 import FadeAndScale from '../animations/FadeAndScale';
 import {Card, CardText, CardHeader, CardTitle, CardActions} from 'material-ui/Card';
+import { relationInverse } from './emoji_picker/emojis';
+import Emoji from './emoji_picker/Emoji';
 
 export default class Visit extends React.Component{
-  constructor(props){
-    super(props);
-    
+
+  getShortCode(){
+    if(!this.props.visit.reaction) return relationInverse["love"];
+    return relationInverse[this.props.visit.reaction];
   }
+  
   render(){
     return(
       <FadeAndScale in={this.props.in}>
@@ -22,7 +26,7 @@ export default class Visit extends React.Component{
                 </CardHeader>
               </div>
               <div className="col-xs-2 col-sm-1">
-                
+                <Emoji code={this.getShortCode()}/>
               </div>
             </div>
           </Card>
