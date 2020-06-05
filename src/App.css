@@ -1,3 +1,10 @@
+.Fab-btn{
+  position: relative;
+  right: -0.5em;
+  top: -2em;
+  cursor: pointer;
+}
+
 .Emoji-picker{
   max-height: 50px;
   overflow: hidden;
@@ -134,7 +141,8 @@
 
 .Place-card{
   text-align: left;
-  padding: 30p
+  padding: 30px;
+  position: relative;
 }
 
 .fade-scale-enter {

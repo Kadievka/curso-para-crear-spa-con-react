@@ -7,18 +7,20 @@ import {connect} from 'react-redux';
 import VisitForm from '../components/visits/VisitForm';
 import * as visitsActions from '../actions/visitsActions';
 import VisitsCollection from '../components/visits/VisitsCollection';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Star from 'material-ui/svg-icons/toggle/star';
+import { yellow700 } from 'material-ui/styles/colors';
+import * as favoritesActions from '../actions/favoritesActions';
 
 class Place extends React.Component{
   constructor(props){
     super(props);
     const slug = props.match.params.slug;
-
     this.loadPlace(slug);
-
     this.state = {
       place:{}
     }
-
+    this.fav = this.fav.bind(this);
   }
 
   loadPlace(slug){
@@ -33,6 +35,22 @@ class Place extends React.Component{
 
   }
 
+  fav(){
+    this.props.dispatch(favoritesActions.add(this.state.place));
+  }
+
+  favBtn(){
+    return (
+    <FloatingActionButton
+      backgroundColor={yellow700}
+      className="Fab-btn"
+      onClick={this.fav}
+    >
+      <Star />
+    </FloatingActionButton>
+    );
+  }
+
   render(){
     const {place} = this.state
     return(
@@ -44,6 +62,7 @@ class Place extends React.Component{
           <div className="row">
             <div className="col-xs-12 col-md-8">
               <Card className="Place-Card">
+                {this.favBtn()}
                 <div className="row">
                   <div className="col-xs-12 col-sm-3 col-lg-2">
                     <img src={place.avatarImage}
