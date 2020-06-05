@@ -30,7 +30,7 @@ export default class EmojiPicker extends React.Component{
   render(){
     return(
       <div>
-        <ul>
+        <ul className="Emoji-picker">
           {this.buildEmojis()}
         </ul>
       </div>

@@ -9,7 +9,11 @@ function getEmojiHTML(code){
 
 const Emoji = (props)=>{
   return (
-    <div onClick={()=>props.onClick(props.code)} dangerouslySetInnerHTML={getEmojiHTML(props.code)}></div>
+    <div
+      className="Emoji-emoji"
+      onClick={()=>props.onClick(props.code)}
+      dangerouslySetInnerHTML={getEmojiHTML(props.code)}
+    ></div>
   );
 }
 
