@@ -34,7 +34,7 @@ export default class VisitModal extends React.Component{
 
   submit(){
     const observation = this.refs.observationField.getValue();
-    this.props.onSubmit(observation);
+    this.props.onSubmit(observation, this.state.reaction);
     this.closeModal();
   }
 

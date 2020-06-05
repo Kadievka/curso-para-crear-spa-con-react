@@ -14,11 +14,12 @@ export function getAllForPlace(jwt, slug){
 
 }
 
-export function add(jwt, place, observation){
+export function add(jwt, place, observation,reaction){
   
   const data = {
     _place: place._id,
-    observation
+    observation,
+    reaction
   }
 
   return fetch(config.url+'/visits',{

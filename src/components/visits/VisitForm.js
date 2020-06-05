@@ -15,8 +15,8 @@ class VisitForm extends React.Component{
     this.refs.modalRef.openModal();
   }
 
-  add(observation){
-    this.props.dispatch(actions.addVisit(this.props.place, observation));
+  add(observation, reaction="love"){
+    this.props.dispatch(actions.addVisit(this.props.place, observation, reaction));
   }
 
   render(){
