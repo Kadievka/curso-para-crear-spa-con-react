@@ -17,6 +17,7 @@ export default class VisitModal extends React.Component{
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.submit = this.submit.bind(this);
+    this.emojiSelected = this.emojiSelected.bind(this);
   }
 
   closeModal(){
@@ -37,6 +38,13 @@ export default class VisitModal extends React.Component{
     this.closeModal();
   }
 
+  emojiSelected(reaction){
+    //console.log(reaction);
+    this.setState({
+      reaction: reaction
+    });
+  }
+
   render(){
     return (
       <div>
@@ -54,7 +62,7 @@ export default class VisitModal extends React.Component{
               </header>
               <div className="row">
                 <div className="col-xs-4 col-sm2 col-lg-1">
-                  <EmojiPicker/>
+                  <EmojiPicker onSelect={this.emojiSelected}/>
                 </div>
                 <div className="col-xs">
                   <TextField
