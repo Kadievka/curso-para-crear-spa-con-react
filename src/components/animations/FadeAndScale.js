@@ -9,6 +9,7 @@ export default class FadeAndScale extends React.Component{
           classNames='fade-scale'
           in={this.props.in}
           timeout={300}
+          unmountOnExit={true}
           >
           {this.props.children}
         </CSSTransition>
